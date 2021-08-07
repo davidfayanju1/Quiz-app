@@ -203,8 +203,8 @@ const showAnswer = (e) => {
     e.preventDefault();
     
     document.body.innerHTML = `
-        <div class="bg-light mx-auto my-5 card container text-align-center">
-            <p class="display-4"> Your score is ${quizScore}%</p>
+        <div class="bg-light d-flex justify-content-center card-body container" style="margin-top: 200px; max-width: 420px">
+            <p class="display-4" style="font-size: 50px;"> Your score is ${quizScore}%</p>
         </div>   
         `
 }    
