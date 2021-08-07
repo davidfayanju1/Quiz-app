@@ -225,7 +225,13 @@ submit.addEventListener ('click', (e) => {
             <p class="display-4">Really?? ${quizScore}% ...</p>
         </div>   
         `
-    }   
+    }else{
+        document.body.innerHTML = `
+        <div class="bg-light mx-auto my-5 card container text-align-center">
+            <p class="display-4">Your score ${quizScore}% ...</p>
+        </div>   
+        `
+    }  
     
 })
 
