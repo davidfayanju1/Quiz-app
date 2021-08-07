@@ -200,40 +200,15 @@ const prevBtnMove = () => {
 
 //Ending the Game
 submit.addEventListener ('click', (e) => {
-    e.preventDefault();
-    if( quizScore === 20 ){
-        document.body.innerHTML = `
-        <div class="bg-light mx-auto my-5 card container text-align-center">
-            <p class="display-4"> You No Try ${quizScore}%</p>
-        </div>   
-        `
-    }else if( quizScore > 80 ){
-        document.body.innerHTML = `
-        <div class="bg-light mx-auto my-5 card container text-align-center">
-            <p class="display-4"> You Try, Na Your Score be this ${quizScore}%</p>
-        </div>   
-        `
-    } else if( quizScore === 60 ){
-        document.body.innerHTML = `
-        <div class="bg-light mx-auto my-5 card container text-align-center">
-            <p class="display-4">Gbasibe Eeyan mi ${quizScore}%</p>
-        </div>   
-        `
-    }else if( quizScore === 0){
-        document.body.innerHTML = `
-        <div class="bg-light mx-auto my-5 card container text-align-center">
-            <p class="display-4">Really?? ${quizScore}% ...</p>
-        </div>   
-        `
-    }else{
-        document.body.innerHTML = `
-        <div class="bg-light mx-auto my-5 card container text-align-center">
-            <p class="display-4">Your score ${quizScore}% ...</p>
-        </div>   
-        `
-    }  
-    
-})
 
+    e.preventDefault();
+    
+    document.body.innerHTML = `
+        <div class="bg-light mx-auto my-5 card container text-align-center">
+            <p class="display-4"> Your score is ${quizScore}%</p>
+        </div>   
+        `
+})    
+        
 prevBtn.addEventListener('click', prevBtnMove);     
 nextBtn.addEventListener('click', nextBtnMove);
