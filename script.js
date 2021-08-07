@@ -198,8 +198,7 @@ const prevBtnMove = () => {
         
 }        
 
-//Ending the Game
-submit.addEventListener ('click', (e) => {
+const showAnswer = (e) => {
 
     e.preventDefault();
     
@@ -208,7 +207,8 @@ submit.addEventListener ('click', (e) => {
             <p class="display-4"> Your score is ${quizScore}%</p>
         </div>   
         `
-})    
-        
+}    
+
+submit.addEventListener ('click', showAnswer)        
 prevBtn.addEventListener('click', prevBtnMove);     
 nextBtn.addEventListener('click', nextBtnMove);
