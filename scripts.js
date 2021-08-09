@@ -45,31 +45,62 @@ const quizOptions = document.querySelector('.quiz-answers');
 const quizStopper = document.querySelector('.quizTimer');
 
 let i = 0;
-
-
+let quizScore = 0;
+let radio;
 
 const startQuiz = () => {
 
     quizStartBtn.classList.add('d-none');
-    quizDisplay();
-    timer();
+
+    quizLoadQuestion();
+        
     
 }
 
-let quizTimer = 10;
-const timer = setInterval(() => {
+const startTimer = document.querySelector('#startTimer')
 
-    quizStopper.innerText = quizTimer;
-    console.log(quizTimer);
-    quizTimer--;
-    if(quizTimer === 0){       
+const quizLoadQuestion = () => {
+
+    loader = 3;
+
+    let quizLoader = setInterval (() => {
+
+        startTimer.classList.remove('d-none');
+
         
-        endQuiz();
+        loader--;
+
+        if(loader === 0){
+
+            startTimer.classList.add('d-none');
+            quizDisplay();
+            stopTimer();
+            clearInterval(quizLoader);
     }
-}, 1000);
+}, 1000)
+}
 
 
-let quizScore = 0;
+const stopTimer = () => {
+
+    let quizTimer = 15;
+
+    const timer = setInterval(() => {
+
+        quizStopper.innerText = quizTimer;
+        
+        quizTimer--;
+
+        if(quizTimer === 0){       
+            
+            endQuiz();
+            clearInterval(timer);
+        }
+    }, 1200);
+}
+    
+
+
 
 const quizDisplay = () => {
 
@@ -91,10 +122,21 @@ const quizDisplay = () => {
         ` 
     })
 
-    const radio  = document.querySelectorAll('.radio');
+    handleQuizScore();   
+}
+
+
+
+ 
+
+const handleQuizScore = () => {
+
+    radio  = document.querySelectorAll('.radio');
 
     radio.forEach((rad) => {
+
         rad.addEventListener('click', (e) => {
+
             if(parseInt(e.target.value) === quizQuestions[i].correct){
                quizScore += 20
             }else if(e.target.value === quizQuestions[i].correct){
@@ -102,11 +144,21 @@ const quizDisplay = () => {
             }else{
                 quizScore += 0;
             }
-
+            
+            radio.forEach ((r) => {
+                 r.checked = false    
+            })
+        
+            quizQuestions[i].clickedValue = e.target.value;
+        
+            e.target.checked = true;
         })
-    })
 
-    
+        if(rad.value === quizQuestions[i].clickedValue){
+            rad.checked = true;
+        }
+
+    })
 }
 
 const prevBtn = document.querySelector('#prevBtn');
