@@ -48,6 +48,9 @@ let i = 0;
 let quizScore = 0;
 let radio;
 
+
+quizQuestions
+
 const startQuiz = () => {
 
     quizStartBtn.classList.add('d-none');
@@ -189,6 +192,13 @@ const quizNav = (e) => {
     }
 }
 
+prevBtn.addEventListener('click', ((e) => {
+    
+    if(quizQuestions.length > i){
+        endBtn.classList.add('d-none');
+        nextBtn.classList.remove('d-none');
+    }
+}))
 const endQuiz = () => {
     quizDisplay();
     document.body.innerHTML = `<div class="container d-flex justify-content-center align-item-center mt-5">
