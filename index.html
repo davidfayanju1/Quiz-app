@@ -9,11 +9,18 @@
     <title>Wiz-quiz</title>
 </head>
 <body style="background-color: #e0e0e0">
-    <div class="container d-flex justify-content-center align-item-center mt-5">
+    <div class="container d-flex justify-content-center align-item-center mt-5"  style="margin-top: 15vh;">
+            
+        <div id="quizStart" style="margin-top: 10vh;">
+            <h1 class="font-weight-bold" style="font-size: 40px;">Welcome To This Quiz.</h1>
+            
+            <div class="d-block btn btn-dark btn-lg py-4 px-5 font-weight-bold" style="border-radius: 0%; margin-top: 70px;">START</div>
+        </div>
         <br>
-        <div class="btn btn-dark  btn-lg py-4 px-5 font-weight-bold" id="quizStart">START</div>
-        <br>
-        <img src="iphone-spinner-2.gif" style="width: 100px" class="d-none" id="startTimer">
+        
+        <div class="spinner-grow text-secondary d-none" role="status" id="startTimer" style="margin-top: 15vh; width: 3rem; height: 3rem;">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 
     <div class="container mt-5 custom-container d-none" id="quizContainer">
