@@ -201,8 +201,8 @@ prevBtn.addEventListener('click', ((e) => {
 }))
 const endQuiz = () => {
     quizDisplay();
-    document.body.innerHTML = `<div class="container d-flex justify-content-center align-item-center mt-5">
-        <div class="display-4 font-weight-bold">You Score Is ${quizScore}%</div>
+    document.body.innerHTML = `<div class="container d-flex justify-content-center align-item-center mt-5" style="max-width: 500px;">
+        <div class="font-weight-bold" style="font-size: 43px;">Your Score Is ${quizScore}%</div>
     </div>`
 }
 
