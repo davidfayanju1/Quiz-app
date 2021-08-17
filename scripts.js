@@ -32,10 +32,51 @@ const quizQuestions = [
         answers: ['bangalore', 'mumbai', 'delhi', 'agra'],
         correct: 'agra',
         clickedValue: ''
-    }
+    },
+    {
+        question: 'Which animal can be seen on the Porsche logo?',
+        answers: ['tiger', 'wolf', 'puma','horse'],
+        correct: 'd',
+        clickedValue: ''
+    },
+
+    {
+        question: 'Who is often credited with creating the world’s first car?',
+        answers: ['Karl Benz', 'rogers federer', 'hellen keller', 'mattias pratt'],
+        correct: 'a',
+        clickedValue: ''
+    },
+
+    {
+        question: 'Which country produces the most coffee in the world?',
+        answers: ['england', 'brazil', 'france', 'scotland'],
+        correct: 'b',
+        clickedValue: ''
+    },
+
+    {
+        question: 'Which country invented tea?',
+        answers: ['denmark', 'paris', 'italy', 'china'],
+        correct: 'd',
+        clickedValue: ''
+    },
+
+    {
+        question: 'Which country is responsible for giving us pizza and pasta?',
+        answers: [
+            'england',
+            'turkey',
+            'italy',
+            'madagascar'
+        ],
+        correct: 'c',
+        clickedValue: ''
+    },
+
+            
 ]
 
-const quizStartBtn = document.querySelector('#quizStart');
+const quizStartBtn = document.querySelector('#quizStartBtn');
 const quizContainer = document.querySelector('#quizContainer');
 const question = document.querySelector('#question');
 const quizOutput = document.querySelector('#quizOutput');
@@ -81,18 +122,24 @@ const quizLoadQuestion = () => {
             clearInterval(quizLoader);
     }
 }, 1000)
+
 }
 
 
 const stopTimer = () => {
 
-    let quizTimer = 15;
+    let quizTimer = 30;
 
     const timer = setInterval(() => {
 
         quizStopper.innerText = quizTimer;
         
         quizTimer--;
+
+        if(quizTimer <= 5){
+            quizStopper.classList.add('text-danger');
+            quizStopper.innerHTML = `${quizTimer}!`;
+        }
 
         if(quizTimer === 0){       
             
@@ -103,14 +150,14 @@ const stopTimer = () => {
 }
     
 
-
+const questionIndex = document.querySelector('#questionIndex');
 
 const quizDisplay = () => {
-
+ 
     quizContainer.classList.remove('d-none');
 
     questionHeader.innerHTML = `Question ${i + 1}`;
-
+    questionIndex.innerHTML = `${i + 1} of ${quizQuestions.length}`
     question.innerHTML = quizQuestions[i].question;
     
     quizOptions.innerHTML = '';
@@ -124,46 +171,44 @@ const quizDisplay = () => {
         </div>
         ` 
     })
-
     handleQuizScore();   
 }
 
+const tellScore = (e) => {
 
+    if(parseInt(e.target.value) === quizQuestions[i].correct){
+       quizScore += 10
+    }else if(e.target.value === quizQuestions[i].correct){
+        quizScore += 10
+    }else{
+        quizScore += 0;
+    }
 
- 
+    radio.forEach((rad) => {
+        rad.checked = false;
+    })
+    
+    quizQuestions[i].clickedValue = e.target.value;
+    e.target.checked = true;
+               
+}
 
 const handleQuizScore = () => {
 
-    radio  = document.querySelectorAll('.radio');
+    radio  = document.querySelectorAll('input');
 
     radio.forEach((rad) => {
 
-        rad.addEventListener('click', (e) => {
-
-            if(parseInt(e.target.value) === quizQuestions[i].correct){
-               quizScore += 20
-            }else if(e.target.value === quizQuestions[i].correct){
-                quizScore += 20
-            }else{
-                quizScore += 0;
-            }
-            
-            radio.forEach ((r) => {
-                 r.checked = false    
-            })
+        rad.addEventListener('change', tellScore)
         
-            quizQuestions[i].clickedValue = e.target.value;
-        
-            e.target.checked = true;
-        })
-
         if(rad.value === quizQuestions[i].clickedValue){
-            rad.checked = true;
+            rad.checked = true;            
         }
 
     })
 }
 
+    
 const prevBtn = document.querySelector('#prevBtn');
 const nextBtn = document.querySelector('#nextBtn');
 const endBtn  = document.querySelector('#endBtn');
@@ -201,9 +246,9 @@ prevBtn.addEventListener('click', ((e) => {
 }))
 const endQuiz = () => {
     quizDisplay();
-    document.body.innerHTML = `<div class="container d-flex justify-content-center align-item-center mt-5" style="max-width: 500px;">
-        <div class="font-weight-bold" style="font-size: 43px;">Your Score Is ${quizScore}%</div>
-    </div>`
+    document.body.innerHTML = `<div class="container d-flex justify-content-center align-item-center mt-5">
+                                    <div class="display-4 font-weight-bold">Your Score Is ${quizScore}%</div>
+                            </div>`
 }
 
 
