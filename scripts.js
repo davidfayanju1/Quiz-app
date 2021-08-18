@@ -36,28 +36,28 @@ const quizQuestions = [
     {
         question: 'Which animal can be seen on the Porsche logo?',
         answers: ['tiger', 'wolf', 'puma','horse'],
-        correct: 'd',
+        correct: 'horse',
         clickedValue: ''
     },
 
     {
         question: 'Who is often credited with creating the world’s first car?',
         answers: ['Karl Benz', 'rogers federer', 'hellen keller', 'mattias pratt'],
-        correct: 'a',
+        correct: 'Karl Benz',
         clickedValue: ''
     },
 
     {
         question: 'Which country produces the most coffee in the world?',
         answers: ['england', 'brazil', 'france', 'scotland'],
-        correct: 'b',
+        correct: 'brazil',
         clickedValue: ''
     },
 
     {
         question: 'Which country invented tea?',
         answers: ['denmark', 'paris', 'italy', 'china'],
-        correct: 'd',
+        correct: 'denmark',
         clickedValue: ''
     },
 
@@ -69,7 +69,7 @@ const quizQuestions = [
             'italy',
             'madagascar'
         ],
-        correct: 'c',
+        correct: 'italy',
         clickedValue: ''
     },
 
